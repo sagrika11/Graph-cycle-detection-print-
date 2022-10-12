@@ -40,6 +40,23 @@ class myClass{
         }
         return false;
     }
+    public static boolean cycle(int v, boolean[]visited, ArrayList<ArrayList<Integer>>adj){
+        Queue<Node> q = new LinkedList<Node>();
+        q.add(new Node(v,-1));
+        while (!q.isEmpty()){
+            int f = q.peek().f;
+            int s = q.peek().s;
+            for (int j : adj.get(f)){
+                if(!visited[j])
+                {
+                    visited[j]=true;
+                    q.add(new Node(j,f));
+                }
+                else if(s!=j) return true;
+            }
+        }
+        return false;
+    }
 
     public static void Dfs(int v, int node,ArrayList<Integer>dfs , ArrayList<ArrayList<Integer>>adj,boolean[]visited ){
         visited[node] = true;
