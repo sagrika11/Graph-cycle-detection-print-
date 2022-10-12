@@ -27,36 +27,10 @@ class myClass{
         System.out.println("BFS traversal of graph -> " +bfs);
         dfs(v,dfs,adj);
         System.out.println("DFS traversal of graph -> " +dfs);
-         boolean g= detectCycle(v,adj);
-        if(g) System.out.println("Yes forming a cycle");
-        else System.out.println("No,there is no cycle");
+         
 
     }
-    public static boolean cycle(int v, boolean[]visited, ArrayList<ArrayList<Integer>>adj){
-        Queue<Node> q = new LinkedList<Node>();
-        q.add(new Node(v,-1));
-        while (!q.isEmpty()){
-            int f = q.peek().f;
-            int s = q.peek().s;
-            for (int j : adj.get(f)){
-                if(!visited[j])
-                {
-                    visited[j]=true;
-                    q.add(new Node(j,f));
-                }
-                else if(s!=j) return true;
-            }
-        }
-        return false;
-    }
-    public static  boolean detectCycle(int v,ArrayList<ArrayList<Integer>>adj){
-        boolean[]visited = new boolean[v+1];
-        for (int i = 1; i <=v; i++) {
-            if(!visited[i])
-                if(cycle(v,visited,adj)) return true;
-        }
-        return false;
-    }
+   
     public static void Dfs(int v, int node,ArrayList<Integer>dfs , ArrayList<ArrayList<Integer>>adj,boolean[]visited ){
         visited[node] = true;
         dfs.add(node);
